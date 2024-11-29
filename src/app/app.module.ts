@@ -12,6 +12,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -45,7 +46,8 @@ import { MessageComponent } from './message/message.component';
     SelectButtonModule,
     DropdownModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

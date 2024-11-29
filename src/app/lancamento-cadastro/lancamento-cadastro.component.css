@@ -1,3 +1,11 @@
 .p-button {
   margin-right: .25em
 }
+
+.p-message-error {
+  padding: 3px;
+}
+
+.p-message {
+  margin: 0.4rem 0;
+}

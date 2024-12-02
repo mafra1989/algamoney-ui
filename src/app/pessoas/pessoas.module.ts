@@ -16,6 +16,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -38,7 +39,9 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    InputMaskModule
+    InputMaskModule,
+
+    SharedModule
   ],
   exports: [
     PessoaCadastroComponent,

@@ -9,25 +9,28 @@ import { LancamentoFiltro, LancamentoService } from './../lancamento.service';
 })
 export class LancamentosPesquisaComponent implements OnInit{
 
-  descricao: string = '';
-  dataVencimentoInicio?: Date;
-  dataVencimentoFim?: Date;
+  totalRegistros: number = 0
+
+  filtro: LancamentoFiltro = new LancamentoFiltro();
 
   lancamentos: any = [];
 
   constructor(private lancamentoService: LancamentoService) {}
 
   ngOnInit(): void {
-    this.consultar();
   }
 
-  consultar() {
-    let filtro: LancamentoFiltro = {
-      descricao: this.descricao,
-      dataVencimentoInicio: this.dataVencimentoInicio,
-      dataVencimentoFim: this.dataVencimentoFim,
-    }
-    this.lancamentos = this.lancamentoService.consultar(filtro).then(lancamentos => this.lancamentos = lancamentos);
+  aoMudarPagina(pagina: number) {
+    this.consultar(pagina);
+  }
+
+  consultar(pagina: number = 0) {
+    this.filtro.pagina = pagina;
+
+     this.lancamentoService.consultar(this.filtro).then(resultado => {
+      this.lancamentos = resultado.lancamentos;
+      this.totalRegistros = resultado.total;
+    });
   }
 
 }

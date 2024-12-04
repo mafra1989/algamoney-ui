@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { PessoaService } from './../pessoa.service';
+import { Component } from '@angular/core';
+import { PessoaFiltro } from '../pessoa.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -7,14 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoasPesquisaComponent {
 
-  pessoas = [
-    { nome: 'Manoel Pinheiro', cidade: 'Uberlândia', estado: 'MG', status: true },
-    { nome: 'Sebastião da Silva', cidade: 'São Paulo', estado: 'SP', status: false },
-    { nome: 'Carla Souza', cidade: 'Florianópolis', estado: 'SC', status: true },
-    { nome: 'Luíz Pereira', cidade: 'Curitiba', estado: 'PR', status: true },
-    { nome: 'Vilmar Andrade', cidade: 'Rio de Janeiro', estado: 'RJ', status: false },
-    { nome: 'Rodrigo Carvalho', cidade: 'Bahia', estado: 'BA', status: true },
-    { nome: 'Pedro Texeira', cidade: 'Amazonas', estado: 'AM', status: false }
-  ];
+  totalRegistros: number = 0
+
+  filtro: PessoaFiltro = new PessoaFiltro();
+
+  pessoas: any = [];
+
+  constructor(private pessoaService: PessoaService) {
+
+  }
+
+  aoMudarPagina(pagina: number) {
+    this.consultar(pagina);
+  }
+
+  consultar(pagina: number = 0) {
+    this.filtro.pagina = pagina;
+
+     this.pessoaService.consultar(this.filtro).then(resultado => {
+      this.pessoas = resultado.pessoas;
+      this.totalRegistros = resultado.total;
+    });
+  }
 
 }

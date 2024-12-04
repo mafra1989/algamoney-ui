@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-export class LancamentoFiltro {
-  descricao?: string;
+export class PessoaFiltro {
+  nome?: string;
   dataVencimentoInicio?: Date;
   dataVencimentoFim?: Date;
   pagina = 0;
@@ -13,22 +13,22 @@ export class LancamentoFiltro {
 @Injectable({
   providedIn: 'root'
 })
-export class LancamentoService {
+export class PessoaService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  pessoasUrl = 'http://localhost:8080/pessoas';
 
   constructor(
     private http: HttpClient,
     private datePipe: DatePipe) { }
 
-  consultar(filtro: LancamentoFiltro): Promise<any> {
+  consultar(filtro: PessoaFiltro): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     let params = new HttpParams();
 
-    if(filtro.descricao) {
-      params = params.set('descricao', filtro.descricao);
+    if(filtro.nome) {
+      params = params.set('nome', filtro.nome);
     }
 
     if(filtro.dataVencimentoInicio) {
@@ -42,17 +42,14 @@ export class LancamentoService {
     params = params.set('page', filtro.pagina.toString());
     params = params.set('size', filtro.itensPorPagina.toString());
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params })
+    return this.http.get(`${this.pessoasUrl}`, { headers, params })
       .toPromise()
       .then((response: any) => {
         let resultado = {
-          lancamentos: response['content'],
+          pessoas: response['content'],
           total: response['totalElements']
         };
         return resultado;
       });
-
-    //return firstValueFrom(this.http.get(`${this.lancamentosUrl}?resumo`, { headers }))
-      //.then((response: any) => response['content']);
   }
 }

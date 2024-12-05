@@ -1,8 +1,15 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService } from 'primeng/api';
+
 import { NavbarComponent } from './navbar/navbar.component';
+import { LancamentosModule } from '../lancamentos/lancamentos.module';
+import { PessoasModule } from '../pessoas/pessoas.module';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -12,14 +19,24 @@ registerLocaleData(localePt, 'pt-BR');
     NavbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ConfirmDialogModule,
+    ToastModule,
+
+    LancamentosModule,
+    PessoasModule
   ],
   exports: [
-    NavbarComponent
+    ConfirmDialogModule,
+    ToastModule,
+
+    NavbarComponent,
+    LancamentosModule,
+    PessoasModule,
   ],
   providers: [
     DatePipe,
-    {provide: LOCALE_ID, useValue: 'pt-BR' }
+    ConfirmationService
   ]
 })
 export class CoreModule { }

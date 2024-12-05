@@ -1,5 +1,5 @@
 <p-table [value]="lancamentos" [paginator]="true" [rows]="itensPorPagina" [responsive]="true"
-    [totalRecords]="totalRegistros" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)">
+    [totalRecords]="totalRegistros" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)" #tabela>
   <ng-template pTemplate="header">
       <tr>
         <th>Pessoa</th>
@@ -26,11 +26,11 @@
         </td>
         <td class="col-valor-content" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
           <span class="p-column-title">Valor</span>
-          {{ lancamento.valor | currency: 'BRL':true:'1.2-2' }}<!-- number:'1.2-2' -->
+          {{ lancamento.valor | number:'1.2-2':'pt-BR' }}<!-- number:'1.2-2'| currency: 'BRL':true:'1.2-2' -->
         </td>
         <td class="col-acoes">
           <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-          <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+          <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(lancamento)"></button>
         </td>
       </tr>
   </ng-template>

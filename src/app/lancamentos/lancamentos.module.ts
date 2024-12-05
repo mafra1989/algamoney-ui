@@ -18,6 +18,7 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { SharedModule } from '../shared/shared.module';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -48,6 +49,9 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class LancamentosModule { }

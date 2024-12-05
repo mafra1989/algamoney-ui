@@ -29,7 +29,9 @@
 
   <div class="grid">
     <div class="col-12">
-      <app-lancamentos-grid [lancamentos]="lancamentos" [totalRegistros]="totalRegistros" [itensPorPagina]="filtro.itensPorPagina" (buscarLancamentos)="aoMudarPagina($event)"></app-lancamentos-grid>
+      <app-lancamentos-grid [lancamentos]="lancamentos" [totalRegistros]="totalRegistros"
+        [itensPorPagina]="filtro.itensPorPagina" (buscarLancamentos)="aoMudarPagina($event)"
+        (excluirLancamento)="excluirLancamento($event)"></app-lancamentos-grid>
     </div>
   </div>
 

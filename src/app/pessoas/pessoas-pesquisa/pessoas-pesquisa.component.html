@@ -20,7 +20,9 @@
 
   <div class="grid">
     <div class="col-12">
-      <app-pessoas-grid [pessoas]="pessoas" [totalRegistros]="totalRegistros" [itensPorPagina]="filtro.itensPorPagina" (buscarPessoas)="aoMudarPagina($event)"></app-pessoas-grid>
+      <app-pessoas-grid [pessoas]="pessoas" [totalRegistros]="totalRegistros"
+        [itensPorPagina]="filtro.itensPorPagina" (buscarPessoas)="aoMudarPagina($event)"
+        (excluirPessoa)="excluirPessoa($event)" (mudarStatus)="alternarStatus($event)"></app-pessoas-grid>
     </div>
   </div>
 

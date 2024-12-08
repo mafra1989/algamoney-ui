@@ -1,5 +1,5 @@
 <p-table [value]="pessoas" [paginator]="true" [rows]="itensPorPagina" [responsive]="true"
-    [totalRecords]="totalRegistros" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)">
+    [totalRecords]="totalRegistros" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)" #tabela>
   <ng-template pTemplate="header">
       <tr>
         <th>Nome</th>
@@ -21,14 +21,16 @@
           {{ pessoa.estado }}
         </td>
         <td><span class="p-column-title">Status</span>
-          <a href="javascript:;" [pTooltip]="pessoa.status ? 'Desativar' : 'Ativar'" tooltipPosition="top">
-            {{ pessoa.status ? 'Ativo' : 'Inativo' }}
+          <a href="javascript:;" [pTooltip]="pessoa.status ? 'Desativar' : 'Ativar'"
+            tooltipPosition="top" (click)="alternarStatus(pessoa)">
+            {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
           </a>
         </td>
         <td class="col-acoes">
           <span class="p-column-title"></span>
           <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-          <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+          <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
+            (click)="confirmarExclusao(pessoa)"></button>
         </td>
       </tr>
   </ng-template>

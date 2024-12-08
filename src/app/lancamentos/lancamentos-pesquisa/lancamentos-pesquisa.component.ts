@@ -23,8 +23,7 @@ export class LancamentosPesquisaComponent implements OnInit{
     private messageService: MessageService,
     private errorHandlerService: ErrorHandlerService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   aoMudarPagina(pagina: number) {
     this.consultar(pagina);
@@ -47,7 +46,7 @@ export class LancamentosPesquisaComponent implements OnInit{
       this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
     }).catch(erro => {
       this.errorHandlerService.handle(erro);
-    });;
+    });
   }
 
 }

@@ -7,6 +7,7 @@ import { PessoaService } from 'src/app/pessoas/pessoa.service';
 import { Lancamento } from './../../core/model';
 import { NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -24,12 +25,15 @@ export class LancamentoCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private lancamentoService: LancamentoService,
     private messageService: MessageService,
-    private errorHandlerService: ErrorHandlerService
+    private errorHandlerService: ErrorHandlerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.carregarCategorias();
     this.carregarPessoas();
+
+    console.log(this.route.snapshot.params['codigo'])
   }
 
   carregarCategorias() {

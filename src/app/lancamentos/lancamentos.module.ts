@@ -19,6 +19,7 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { SharedModule } from '../shared/shared.module';
 import { MessageService } from 'primeng/api';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -32,6 +33,7 @@ import { MessageService } from 'primeng/api';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
 
     InputTextModule,
     ButtonModule,

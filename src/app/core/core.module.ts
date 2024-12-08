@@ -10,6 +10,7 @@ import { ConfirmationService } from 'primeng/api';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentosModule } from '../lancamentos/lancamentos.module';
 import { PessoasModule } from '../pessoas/pessoas.module';
+import { RouterModule } from '@angular/router';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -22,6 +23,7 @@ registerLocaleData(localePt, 'pt-BR');
     CommonModule,
     ConfirmDialogModule,
     ToastModule,
+    RouterModule,
 
     LancamentosModule,
     PessoasModule
